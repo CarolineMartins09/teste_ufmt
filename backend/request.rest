@@ -1,0 +1,14 @@
+POST http://localhost:3003/html
+Content-Type: application/json
+
+{
+    "url":"https://legal-detail.surge.sh/#"
+}
+
+###
+GET http://localhost:3003/response
+Content-Type: application/json
+
+{
+    "url":"https://legal-detail.surge.sh/#"
+}
