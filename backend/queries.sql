@@ -1,0 +1,10 @@
+-- Active: 1674084192186@@35.226.146.116@3306@jbl-4416152-caroline-martins
+ CREATE TABLE IF NOT EXISTS tags (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        url VARCHAR(255) NOT NULL,
+        tag VARCHAR(255) NOT NULL,
+        count INT NOT NULL
+);
+
+
+SELECT * FROM tags;

@@ -1,14 +1,9 @@
+import express from "express";
+import { TagControlller } from "../controller/TagController";
 
+export const tagRouter = express.Router()
 
-//EXEMPLOOO
+const tagControlller = new TagControlller()
 
+tagRouter.post("/html", tagControlller.saveTag)
 
-// import express from "express";
-
-// import { PokemonController } from "../controller/PokemonController";
-
-// export const pokemonRouter = express.Router()
-
-// const pokemonController = new PokemonController()
-
-// pokemonRouter.get("/pokemon",pokemonController.getAll)

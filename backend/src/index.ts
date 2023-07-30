@@ -1,10 +1,6 @@
+import { app } from "./app";
+import { tagRouter } from "./route/Routes";
 
-//EXEMPLOOO
+app.use("", tagRouter);
 
-// import { app } from "./app";
-// import { pokemonRouter } from "./route/Routes";
-
-// app.use("/page",pokemonRouter)
-
-// app.use("",pokemonRouter)
 
