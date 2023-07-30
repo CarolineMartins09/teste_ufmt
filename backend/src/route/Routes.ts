@@ -7,3 +7,4 @@ const tagControlller = new TagControlller()
 
 tagRouter.post("/html", tagControlller.saveTag)
 
+tagRouter.get("/response", tagControlller.getAllTag)

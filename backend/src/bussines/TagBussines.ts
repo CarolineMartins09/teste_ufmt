@@ -4,6 +4,8 @@ import * as cheerio from 'cheerio';
 import axios from "axios";
 
 
+const tagDatabase = new TagDatabase()
+
 export class TagBussines {
 
     saveTagBussines = async (url: string): Promise<any> => {
@@ -23,12 +25,24 @@ export class TagBussines {
 
             const tagCounts: TagCount[] = Object.entries(tags).map(([tag, count]) => ({ tag, count }));
 
-            const tagDatabase = new TagDatabase()
-
             await tagDatabase.saveTag(url, tagCounts)
 
         } catch (error: any) {
             throw new CustomError(400, error.message);
         }
+    }
+
+    getAllTags = async (url: string) => {
+        try {
+            if(!url){
+                throw new CustomError(400, "Body invalid! 'url'");
+            }
+            const getTag = await tagDatabase.getAllTag(url)
+        
+            return getTag
+        } catch (error: any) {
+            throw new CustomError(400, error.message);
+        }
+
     }
 }

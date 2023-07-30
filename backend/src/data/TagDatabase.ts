@@ -12,16 +12,24 @@ export class TagDatabase extends BaseDataBase{
             url:url,
             tag: tagCount.tag,
             count: tagCount.count,
-          }));
-          console.log(values);
-          
+          }));       
           await TagDatabase.connection(TagDatabase.TABLE_NAME).insert(values);
-          console.log("Data inserted successfully.");
 
         } catch (error: any) {
             throw new Error(error.sqlMessage || error.message);
           }
         }
-        
+      
+      getAllTag = async(url:string)=>{
+        try{
+          const result = await TagDatabase.connection.raw(`
+            SELECT tag, count FROM ${TagDatabase.TABLE_NAME} WHERE url="${url}"
+          
+          `)
+          return result[0]
+        }catch(error:any){
+          throw new Error(error.sqlMessage || error.message);
+        }
+      }
         
       }
