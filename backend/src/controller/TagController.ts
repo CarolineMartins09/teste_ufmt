@@ -12,24 +12,21 @@ export class TagControlller {
 
             const result = await tagBusiness.saveTagBussines(url)
 
-            res.status(200).send(result)
+            res.status(200).send(`Com sucesso!${result}`)
         } catch (error: any) {
             res.status(400).send({ error: error.message });
         }
     }
-
+    
     getAllTag = async (req: Request, res: Response) => {
         try {
-            const { url } = req.body
+            const url = req.query.url as string;
 
-            const result = await tagBusiness.getAllTags(url)
+            const result = await tagBusiness.getAllTags(url);
 
-            res.status(200).send(result)
-
+            res.status(200).send(result);
         } catch (error: any) {
             res.status(400).send({ error: error.message });
         }
-
-
-    }
+    };
 }
