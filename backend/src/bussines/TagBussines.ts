@@ -34,15 +34,14 @@ export class TagBussines {
 
     getAllTags = async (url: string) => {
         try {
-            if(!url){
-                throw new CustomError(400, "Body invalid! 'url'");
+            if (!url) {
+                throw new CustomError(400, "Params invalid!");
             }
             const getTag = await tagDatabase.getAllTag(url)
-        
+
             return getTag
         } catch (error: any) {
             throw new CustomError(400, error.message);
         }
-
     }
 }
