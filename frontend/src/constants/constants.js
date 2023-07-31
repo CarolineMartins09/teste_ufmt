@@ -1,0 +1,1 @@
+export const BASE_URL = "https://ufmt-caroline-martins.onrender.com"
