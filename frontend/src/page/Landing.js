@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constants/constants";
+import "./LandingStyled.css"
 
 function Landing() {
     const [url, setUrl] = useState('');
@@ -29,11 +30,15 @@ function Landing() {
     };
 
     return (
-        <div>
+        <main>
             <h1>Contador de Tags</h1>
-            <div>
-                <input type="text" value={url} onChange={handleInput} />
-                <button onClick={buttonClick}>aqui</button>
+            <p>"URL para exemplo:<br/>
+            https://legal-detail.surge.sh/ <br/>
+            http://chivalrous-cave.surge.sh/"
+            </p>
+            <div className="input-container">
+                <input type="text" value={url} onChange={handleInput} placeholder="Insira sua URL HTML Aqui!"/>
+                <button onClick={buttonClick}>Conferir contagem</button>
             </div>
             <div>
                 <h2>Resultado:</h2>
@@ -41,7 +46,7 @@ function Landing() {
           <thead>
             <tr>
               <th>Tag</th>
-              <th>Valor</th>
+              <th>Quantidade</th>
             </tr>
           </thead>
           <tbody>
@@ -54,7 +59,7 @@ function Landing() {
           </tbody>
         </table>
             </div>
-        </div>
+        </main>
     )
 }
 
