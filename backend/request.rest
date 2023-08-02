@@ -6,12 +6,8 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3003/response
+GET http://localhost:3003/response?url=https://legal-detail.surge.sh/
 Content-Type: application/json
-
-{
-    "url":"https://legal-detail.surge.sh/"
-}
 
 # URL DEPLOY 
 #https://ufmt-caroline-martins.onrender.com/response
