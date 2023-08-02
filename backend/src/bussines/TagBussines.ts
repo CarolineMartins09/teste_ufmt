@@ -10,12 +10,12 @@ export class TagBussines {
 
     saveTagBussines = async (url: string): Promise<any> => {
         try {
-            const response = await axios.get(url);
-            const html = response.data;
-            const cheerioObjeto = cheerio.load(html);
-            const tags: { [tag: string]: number } = {};
+            const response = await axios.get(url); //Faz um GET para a URL para obter o conteúdo da página
+            const html = response.data; // Carrega o HTML da resposta para que possa ser analisado e manipulado
+            const cheerioObjeto = cheerio.load(html); //HTML obtido na resposta é carregado no Cheerio
+            const tags: { [tag: string]: number } = {};//armazenar informações sobre as tags HTML encontradas na página.
 
-            cheerioObjeto('*').each((index, element) => {
+            cheerioObjeto('*').each((index, element) => { //O '*'seleciona todas as tags HTML na página 
                 const tagName = cheerioObjeto(element).prop('tagName');
                 if (tagName) {
                     const lowercaseTagName = tagName.toLowerCase();
@@ -23,6 +23,7 @@ export class TagBussines {
                 }
             });
 
+            //Método para retornar em pares (chave, valor) em formato de objeto e poder enviar em formato correto ao BD
             const tagCounts: TagCount[] = Object.entries(tags).map(([tag, count]) => ({ tag, count }));
 
             await tagDatabase.saveTag(url, tagCounts)
@@ -37,7 +38,7 @@ export class TagBussines {
             if (!url) {
                 throw new CustomError(400, "Params invalid!");
             }
-            const getTag = await tagDatabase.getAllTag(url)
+            const getTag = await tagDatabase.getAllTag(url) //Simples GET para trazer as tags da URL enviada
 
             return getTag
         } catch (error: any) {
